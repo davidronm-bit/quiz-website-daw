@@ -28,6 +28,10 @@ switch ($page) {
         header("Location: index.php");
         exit();
 
+    case 'catalog':
+        include 'pages/catalog.php';
+        break;
+
     case 'difficulty':
         include 'pages/difficulty.php';
         break;
@@ -51,14 +55,8 @@ switch ($page) {
         break;
 
     default:
-        // Main Logic Flow
-        if (!isset($_SESSION['difficulty'])) {
-            include 'pages/difficulty.php';
-        } elseif (isset($_SESSION['quiz_done']) && $_SESSION['quiz_done'] === true) {
-            include 'pages/results.php';
-        } else {
-            include 'pages/quiz.php';
-        }
+        // Default Landing: Catalog
+        include 'pages/catalog.php';
         break;
 }
 ?>

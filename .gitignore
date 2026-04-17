@@ -10,3 +10,6 @@ Desktop.ini
 
 # Git
 .git/
+
+# Temporary artifacts
+scratch/

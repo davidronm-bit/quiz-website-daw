@@ -12,3 +12,6 @@
 <body>
     <div class="blob"></div>
     <div class="container">
+        <div style="display: flex; gap: 15px; margin-bottom: 20px; font-size: 0.9rem;">
+            <a href="index.php?page=catalog" style="color: var(--primary); text-decoration: none; font-weight: 600;">Catalog</a>
+        </div>

@@ -8,10 +8,21 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] === false) {
     exit();
 }
 
+if (isset($_GET['topic'])) {
+    $_SESSION['topic'] = $_GET['topic'];
+}
+
+if (!isset($_SESSION['topic'])) {
+    header("Location: index.php?page=catalog");
+    exit();
+}
+
+$currentTopic = $_SESSION['topic'];
+
 if (isset($_POST['set_difficulty'])) {
     $diff = $_POST['difficulty'];
     $_SESSION['difficulty'] = $diff;
-    $_SESSION['questions'] = getRandomQuestionsByDifficulty($questionPool, $diff);
+    $_SESSION['questions'] = getRandomQuestionsByDifficulty($questionPool, $currentTopic, $diff);
     header("Location: index.php?page=quiz");
     exit();
 }

@@ -42,7 +42,7 @@ include 'partials/header.php';
     </div>
 </div>
 
-<h1>Web Mastery Quiz</h1>
+<h1>PHP Quiz</h1>
 <p class="subtitle" style="margin-bottom: 30px;">Level: <?php echo $_SESSION['difficulty']; ?></p>
 
 <div class="timer-display" id="countdown">60s</div>
@@ -61,8 +61,9 @@ include 'partials/header.php';
             <div class="options-container">
                 <?php foreach ($q['options'] as $oIndex => $option): ?>
                     <label class="option">
-                        <input type="radio" name="answers[<?php echo $q['id']; ?>]" value="<?php echo htmlspecialchars($option); ?>"
-                            class="quiz-radio" onclick="handleRadioToggle(this)">
+                        <input type="radio" name="answers[<?php echo $q['id']; ?>]"
+                            value="<?php echo htmlspecialchars($option); ?>" class="quiz-radio"
+                            onclick="handleRadioToggle(this)">
                         <span><?php echo htmlspecialchars($option); ?></span>
                     </label>
                 <?php endforeach; ?>
@@ -71,7 +72,7 @@ include 'partials/header.php';
             <div style="margin-top: 40px; display: flex; justify-content: center;">
                 <?php if ($index < count($questions) - 1): ?>
                     <button type="button" class="btn next-btn" id="nextBtn-<?php echo $index; ?>" onclick="nextQuestion()"
-                        disabled style="width: auto; padding: 12px 40px;">Next Question &gt;&gt;</button>
+                        disabled style="width: auto; padding: 12px 40px;">Next Question</button>
                 <?php else: ?>
                     <button type="submit" name="submit_quiz" class="btn" style="width: auto; padding: 12px 40px;">Finish Quiz
                         &gt;&gt;</button>

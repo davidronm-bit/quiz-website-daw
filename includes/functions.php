@@ -96,13 +96,21 @@ function registerUser($pdo, $username, $password) {
 /**
  * Filters the question pool by difficulty
  */
-function getRandomQuestionsByDifficulty($pool, $difficulty) {
-    $filtered = array_filter($pool, function($q) use ($difficulty) {
+function getRandomQuestionsByDifficulty($pool, $topic, $difficulty) {
+    // 1. Safety check for topic
+    if (!isset($pool[$topic])) return [];
+    
+    $topicPool = $pool[$topic];
+
+    // 2. Filter by difficulty
+    $filtered = array_filter($topicPool, function($q) use ($difficulty) {
         return $q['difficulty'] === $difficulty;
     });
+    
     $filtered = array_values($filtered);
     shuffle($filtered);
-    // Only return 15 questions
+    
+    // 3. Return up to 15 questions
     return array_slice($filtered, 0, 15);
 }
 
